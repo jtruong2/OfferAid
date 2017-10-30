@@ -9,7 +9,7 @@ export default class App extends React.Component {
     this.state = {
       email: null,
       password: null,
-      loggedInStatus: false
+      loggedIn: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -19,8 +19,7 @@ export default class App extends React.Component {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization:', token
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         session: {
@@ -28,10 +27,12 @@ export default class App extends React.Component {
           password: obj.password
         }
       })
-    }).then((response) => console.log(response))
-    this.setState({
-      loggedInStatus: true
+    }).then(function(response){
+      if(response._bodyInit != null){
+        this.setState({ loggedIn: true })
+      }
     })
+    console.log(this.state)
   }
 
   handleSubmit(obj) {
