@@ -2,14 +2,16 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import BackgroundImage from './src/components/background/background-image'
 import Login from './src/components/login/login'
+import Dashboard from './src/components/dashboard/dashboard'
+import renderIf from './src/render/renderIf'
 
 export default class App extends React.Component {
   constructor() {
     super()
     this.state = {
       email: null,
-      password: null,
-      loggedIn: false
+      loggedIn: false,
+      dashboard: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -27,38 +29,34 @@ export default class App extends React.Component {
           password: obj.password
         }
       })
-    }).then(function(response){
+    }).then((response) => {
       if(response._bodyInit != null){
-        this.setState({ loggedIn: true })
+        this.setState({
+          loggedIn: true,
+          dashboard: true
+        })
       }
-    })
-    console.log(this.state)
+    }).then(() => { console.log(this.state)
+    }).done()
   }
 
   handleSubmit(obj) {
     this.setState({
-      email: obj.email,
-      password: obj.password,
+      email: obj.email
     }, function() {
-      this.verifyLogin(this.state)
+      this.verifyLogin(obj)
     })
   }
 
   render() {
     return (
-      // <View style={styles.container}>
-        <Login
-        handleSubmit ={this.handleSubmit}/>
-      // </View>
+      <View style={{flex: 1}}>
+        {renderIf(this.state.loggedIn === false, <Login handleSubmit = {this.handleSubmit} />)}
+        {renderIf(this.state.dashboard === true, <Dashboard />)}
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    display: 'flex'
-  }
 });
