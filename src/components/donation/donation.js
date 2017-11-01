@@ -1,12 +1,12 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView} from 'react-native';
-
+import ItemsList from './itemsList'
 
 class Donation extends React.Component {
   render() {
     return(
       <View style={styles.container}>
-        <Text>Donation</Text>
+        <ItemsList />
       </View>
     )
   }
