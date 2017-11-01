@@ -17,7 +17,7 @@ class Login extends React.Component {
     return(
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <View style={styles.loginContainer}>
-          <Image resizeMode="contain" style={styles.logo} source={require('../../images/placeholder-image.png')} />
+          <Image resizeMode="contain" style={styles.logo} source={require('../../images/donatelogologin.png')} />
         </View>
 
         <View style={styles.formContainer}>
@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
   },
   logo: {
     position: 'absolute',
-    width: 300,
-    height: 100
+    width: 400,
+    height: 200
   }
 })
 module.exports = Login

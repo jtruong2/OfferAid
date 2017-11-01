@@ -25,6 +25,7 @@ class LoginForm extends React.Component {
                keyboardType='email-address'
                returnKeyType="next"
                placeholder='Email'
+               textAlign= 'center'
                placeholderTextColor='rgba(225,225,225,0.7)'/>
 
         <TextInput style = {styles.input}
@@ -32,6 +33,7 @@ class LoginForm extends React.Component {
                     onChangeText = {(password) => this.setState({ password })}
                     ref={(input)=> this.passwordInput = input}
                     placeholder='Password'
+                    textAlign= 'center'
                     placeholderTextColor='rgba(225,225,225,0.7)'
                     secureTextEntry/>
 

@@ -11,7 +11,7 @@ export default class App extends React.Component {
     this.state = {
       email: null,
       loggedIn: false,
-      dashboard: false
+      scene: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -29,11 +29,11 @@ export default class App extends React.Component {
           password: obj.password
         }
       })
-    }).then((response) => {
-      if(response._bodyInit != null){
+    }).then((response) => response.json()).then((responseJson) => {
+      if(responseJson.status == 'logged in'){
         this.setState({
           loggedIn: true,
-          dashboard: true
+          scene: 'Dashboard'
         })
       }
     }).then(() => { console.log(this.state)
@@ -43,16 +43,17 @@ export default class App extends React.Component {
   handleSubmit(obj) {
     this.setState({
       email: obj.email
-    }, function() {
+    }, () => {
       this.verifyLogin(obj)
     })
   }
 
   render() {
+    let currentScene = this.state.scene
     return (
       <View style={{flex: 1}}>
         {renderIf(this.state.loggedIn === false, <Login handleSubmit = {this.handleSubmit} />)}
-        {renderIf(this.state.dashboard === true, <Dashboard />)}
+        {renderIf(this.state.scene == 'Dashboard', <Dashboard />)}
       </View>
     );
   }
