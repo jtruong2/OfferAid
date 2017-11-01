@@ -4,6 +4,7 @@ import BackgroundImage from './src/components/background/background-image'
 import Login from './src/components/login/login'
 import Dashboard from './src/components/dashboard/dashboard'
 import renderIf from './src/render/renderIf'
+import TabBar from './src/components/tabBar/tabBar'
 
 export default class App extends React.Component {
   constructor() {
@@ -11,7 +12,6 @@ export default class App extends React.Component {
     this.state = {
       email: null,
       loggedIn: false,
-      scene: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -33,7 +33,6 @@ export default class App extends React.Component {
       if(responseJson.status == 'logged in'){
         this.setState({
           loggedIn: true,
-          scene: 'Dashboard'
         })
       }
     }).then(() => { console.log(this.state)
@@ -49,11 +48,10 @@ export default class App extends React.Component {
   }
 
   render() {
-    let currentScene = this.state.scene
     return (
       <View style={{flex: 1}}>
         {renderIf(this.state.loggedIn === false, <Login handleSubmit = {this.handleSubmit} />)}
-        {renderIf(this.state.scene == 'Dashboard', <Dashboard />)}
+        {renderIf(this.state.loggedIn === true, <TabBar />)}
       </View>
     );
   }
