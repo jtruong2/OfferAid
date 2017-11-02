@@ -12,6 +12,7 @@ export default class App extends React.Component {
     this.state = {
       email: null,
       loggedIn: false,
+      address: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -35,8 +36,16 @@ export default class App extends React.Component {
           loggedIn: true,
         })
       }
+      this.handleAddress(responseJson)
     }).then(() => { console.log(this.state)
     }).done()
+  }
+
+  handleAddress(obj) {
+    let fullAddress = `\n ${obj.user.street_address} \n ${obj.user.city}, ${obj.user.state} ${obj.user.zip_code}`
+    this.setState({
+      address: fullAddress
+    })
   }
 
   handleSubmit(obj) {
@@ -51,7 +60,7 @@ export default class App extends React.Component {
     return (
       <View style={{flex: 1}}>
         {renderIf(this.state.loggedIn === false, <Login handleSubmit = {this.handleSubmit} />)}
-        {renderIf(this.state.loggedIn === true, <TabBar />)}
+        {renderIf(this.state.loggedIn === true, <TabBar address = {this.state.address}/>)}
       </View>
     );
   }

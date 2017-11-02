@@ -1,12 +1,58 @@
 import React from 'react'
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, DatePickerIOS} from 'react-native';
+import LocationPicker from '../locationPicker/locationPicker'
 
 class DatePicker extends React.Component {
+
+  constructor(){
+    super()
+    this.state = {
+      date: new Date()
+    }
+  }
+  _handleBackPress() {
+   this.props.navigator.pop()
+  }
+
+  _handleNextPress(nextRoute) {
+   this.props.navigator.push(nextRoute)
+  }
+
+  onDateChange = (date) => {
+    this.setState({
+      date: date.toString
+    })
+  }
+
+
   render() {
+    const nextRoute = {
+      component: LocationPicker,
+      title: 'Select A Pickup Location',
+      passProps: {address: this.props.address, date: this.state.date, items: this.props.items}
+    }
     return(
-      <Text>DatePicker</Text>
+      <View style={styles.container}>
+        <DatePickerIOS
+          date={this.state.date}
+          mode="datetime"
+          timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
+          onDateChange={this.onDateChange}
+        />
+        <TouchableHighlight onPress={() => {this._handleNextPress(nextRoute)}}>
+          <Text style={{marginBottom: 100, alignSelf: 'center'}}>
+            Continue
+          </Text>
+        </TouchableHighlight>
+      </View>
     )
   }
 }
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#2c3e50',
+    paddingTop: 64
+  },
+})
 module.exports = DatePicker
