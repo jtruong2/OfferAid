@@ -20,16 +20,17 @@ class DatePicker extends React.Component {
 
   onDateChange = (date) => {
     this.setState({
-      date: date.toString
+      date: date
     })
   }
 
 
   render() {
+    let date = this.state.date
     const nextRoute = {
       component: LocationPicker,
       title: 'Select A Pickup Location',
-      passProps: {address: this.props.address, date: this.state.date, items: this.props.items}
+      passProps: {address: this.props.address, date: date.toString(), items: this.props.items}
     }
     return(
       <View style={styles.container}>

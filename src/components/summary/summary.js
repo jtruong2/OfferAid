@@ -22,11 +22,10 @@ class Summary extends React.Component {
  _keyExtractor = (item, index) => index
 
  componentDidMount() {
-   this.setConfirmation()
-   console.log(this.state)
+   this.setSummary()
  }
 
- setConfirmation() {
+ setSummary() {
    this.setState({
      pickUpAddress: this.props.address,
      pickUpDate: this.props.date,
@@ -46,6 +45,7 @@ class Summary extends React.Component {
       <View style={styles.container}>
       <Text>Summary</Text>
       <Text>{this.state.pickUpAddress}</Text>
+      <Text>{this.state.pickUpDate}</Text>
       <FlatList
         data={this.state.items}
         keyExtractor={this._keyExtractor}
