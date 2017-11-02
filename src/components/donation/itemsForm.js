@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, View, TextInput, Picker, KeyboardAvoidingView, Button } from 'react-native';
+import { Text, StyleSheet, View, TextInput, Picker, KeyboardAvoidingView, Button, Keyboard } from 'react-native';
 
 class ItemsForm extends React.Component {
   constructor(props) {
@@ -8,10 +8,13 @@ class ItemsForm extends React.Component {
       item: 'Canned goods',
       quantity: null,
     }
+    // this.handleAddItem = this.handleAddItem.bind(this)
   }
 
-  addToList(){
+  handleAddItem() {
     this.props.handleList(this.state)
+    this.textInput.clear()
+    Keyboard.dismiss()
   }
 
   render() {
@@ -33,9 +36,10 @@ class ItemsForm extends React.Component {
             onChangeText={(quantity) => this.setState({quantity})}
             value={this.state.quantity}
             keyboardType= "numeric"
+            ref={input => { this.textInput = input }}
           />
         </View>
-        <Button onPress={() => this.props.handleList(this.state)} title="Add Item" style={styles.button}/>
+          <Button onPress={() => {this.props.handleList(this.state); this.textInput.clear(); Keyboard.dismiss()}} title="Add Item" style={styles.button}/>
       </KeyboardAvoidingView>
     )
   }
