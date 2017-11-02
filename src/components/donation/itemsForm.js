@@ -8,7 +8,6 @@ class ItemsForm extends React.Component {
       item: 'Canned goods',
       quantity: null,
     }
-    // this.handleAddItem = this.handleAddItem.bind(this)
   }
 
   handleAddItem() {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView, FlatList, Button} from 'react-native';
 import ItemsForm from './itemsForm'
-import renderList from '../../render/renderList'
+import renderNextPage from '../nextNav/nextNav'
 
 class ItemList extends React.Component {
   constructor(props) {
@@ -31,6 +31,7 @@ class ItemList extends React.Component {
           keyExtractor={this._keyExtractor}
           renderItem={({item}) => <Text style={styles.list}>{item['item']}  x  {item['quantity']}</Text>}
         />
+        <Button onPress={renderNextPage("Items", "Date")} title="Next" />
       </KeyboardAvoidingView>
     )
   }
