@@ -7,8 +7,7 @@ class ItemList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedItems: [],
-      availableItems: props.availableItems
+      selectedItems: []
     }
     this.handleList = this.handleList.bind(this)
   }
@@ -31,17 +30,6 @@ class ItemList extends React.Component {
 
   _keyExtractor = (item, index) => index
 
-  // componentDidMount(){
-  //   this._loadAvailableItems()
-  // }
-  //
-  // _loadAvailableItems(){
-  //   fetch('https://offeraidbackend.herokuapp.com/api/v1/items')
-  //   .then((response) => response.json())
-  //   .then((responseJson) => this.setState({ availableItems: responseJson}))
-  //   .then(() => console.log(this.state.availableItems))
-  // }
-
   render() {
 
     const nextRoute = {
@@ -49,12 +37,11 @@ class ItemList extends React.Component {
       title: 'Pick a Date and Time',
       passProps: {userInfo: this.props.userInfo, items: this.state.selectedItems}
     }
-    this._loadAvailableItems
     return(
       <KeyboardAvoidingView style={styles.container}>
-        <ItemsForm handleList = {this.handleList} availableItems = {this.state.availableItems}/>
+        <ItemsForm handleList = {this.handleList} availableItems = {this.props.availableItems}/>
         <FlatList
-          data={this.state.items}
+          data={this.state.selectedItems}
           keyExtractor={this._keyExtractor}
           renderItem={({item}) => <Text style={styles.list}>{item['item']}  x  {item['quantity']}</Text>}
         />

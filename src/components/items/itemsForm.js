@@ -5,29 +5,28 @@ class ItemsForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      item: '',
+      item: props.availableItems[0].name,
       quantity: null,
-      itemSelection: props.availableItems
     }
   }
 
-  handleAddItem() {
+  _handleAddItem() {
     this.props.handleList(this.state)
     this.textInput.clear()
     Keyboard.dismiss()
   }
 
   render() {
-    let availableItems = this.state.itemSelection.map((s, i) => {
-      return <Picker.Item key={i} value={s} label={s} />
+    let items = this.props.availableItems.map((obj) => {
+      return <Picker.Item key={obj.id} value={obj.name} label={obj.name} />
     })
     return(
       <KeyboardAvoidingView style={styles.container}>
         <Picker
         selectedValue={this.state.item}
-        onValueChange={(itemValue, itemIndex) => this.setState({item: itemValue})}
+        onValueChange={(itemValue, itemIndex) => this.setState({item: itemValue })}
         itemStyle={styles.itemLabel}>
-          {availableItems}
+        {items}
         </Picker>
         <View style={styles.quantitySect}>
           <Text style={{color: 'white', padding: 10}}>Quantity:</Text>
@@ -38,7 +37,7 @@ class ItemsForm extends React.Component {
             ref={input => { this.textInput = input }}
           />
         </View>
-          <Button onPress={() => {this.props.handleList(this.state); this.textInput.clear(); Keyboard.dismiss()}} title="Add Item" style={styles.button}/>
+          <Button onPress={() => {this._handleAddItem()}} title="Add Item" style={styles.button}/>
       </KeyboardAvoidingView>
     )
   }

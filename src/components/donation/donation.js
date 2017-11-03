@@ -3,6 +3,12 @@ import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableHighlight
 import ItemList from '../items/itemList'
 
 class Donation extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      availableItems: null
+    }
+  }
   _handleBackPress() {
    this.props.navigator.pop()
   }
@@ -15,16 +21,18 @@ class Donation extends React.Component {
    fetch('https://offeraidbackend.herokuapp.com/api/v1/items')
    .then((response) => response.json())
    .then((responseJson) => this.setState({ availableItems: responseJson}))
-   .then(() => console.log(this.state.availableItems))
+   .then(() => console.log(this.state))
+ }
+
+ componentDidMount() {
+   this._loadAvailableItems()
  }
 
   render() {
-    let items = this._loadAvailableItems()
-
     const nextRoute = {
       component: ItemList,
       title: 'Add Items',
-      passProps: { userInfo: this.props.userInfo, availableItems: items }
+      passProps: { userInfo: this.props.userInfo, availableItems: this.state.availableItems }
     }
 
     return(
