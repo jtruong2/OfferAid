@@ -3,10 +3,10 @@ import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableHighlight
 import Summary from '../summary/summary'
 
 class LocationPicker extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = ({
-      address: null
+      address: props.userInfo.address
     })
   }
   _handleBackPress() {
@@ -17,21 +17,11 @@ class LocationPicker extends React.Component {
    this.props.navigator.push(nextRoute)
  }
 
- componentDidMount() {
-   this.setAddress()
- }
-
- setAddress() {
-   this.setState({
-     address: this.props.address
-   })
- }
-
   render() {
     const nextRoute = {
       component: Summary,
       title: 'Summary',
-      passProps: {address: this.state.address, date: this.props.date, items: this.props.items}
+      passProps: {address: this.state.address, date: this.props.date, items: this.props.items, userInfo: this.props.userInfo}
     }
 
     return(

@@ -43,7 +43,7 @@ class TabBar extends React.Component {
           title= "Donate"
           selected={this.state.selectedTab === 'Donations'}
           onPress={() => this.setTab('Donations')}>
-          <Navigation address = {this.props.address}/>
+          <Navigation userInfo = {this.props.userInfo}/>
         </TabBarIOS.Item>
 
         <TabBarIOS.Item

@@ -30,7 +30,7 @@ class DatePicker extends React.Component {
     const nextRoute = {
       component: LocationPicker,
       title: 'Select A Pickup Location',
-      passProps: {address: this.props.address, date: date.toString(), items: this.props.items}
+      passProps: {userInfo: this.props.userInfo, date: date.toString(), items: this.props.items}
     }
     return(
       <View style={styles.container}>

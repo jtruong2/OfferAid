@@ -10,6 +10,7 @@ export default class App extends React.Component {
   constructor() {
     super()
     this.state = {
+      id: null,
       email: null,
       loggedIn: false,
       address: null
@@ -33,6 +34,7 @@ export default class App extends React.Component {
     }).then((response) => response.json()).then((responseJson) => {
       if(responseJson.status == 'logged in'){
         this.setState({
+          id: responseJson.user.id,
           loggedIn: true,
         })
       }
@@ -60,7 +62,7 @@ export default class App extends React.Component {
     return (
       <View style={{flex: 1}}>
         {renderIf(this.state.loggedIn === false, <Login handleSubmit = {this.handleSubmit} />)}
-        {renderIf(this.state.loggedIn === true, <TabBar address = {this.state.address}/>)}
+        {renderIf(this.state.loggedIn === true, <TabBar userInfo = {this.state}/>)}
       </View>
     );
   }

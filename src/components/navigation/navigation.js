@@ -9,7 +9,7 @@ class Navigator extends React.Component {
         initialRoute={{
           component: Donation,
           title: 'Donate',
-          passProps: {address: this.props.address}
+          passProps: {userInfo: this.props.userInfo}
         }}
         style={{flex: 1}}
       />

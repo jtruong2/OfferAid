@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableHighlight} from 'react-native';
-import ItemList from './itemList'
+import ItemList from '../items/itemList'
 
 class Donation extends React.Component {
   _handleBackPress() {
@@ -11,11 +11,20 @@ class Donation extends React.Component {
    this.props.navigator.push(nextRoute)
  }
 
+ _loadAvailableItems(){
+   fetch('https://offeraidbackend.herokuapp.com/api/v1/items')
+   .then((response) => response.json())
+   .then((responseJson) => this.setState({ availableItems: responseJson}))
+   .then(() => console.log(this.state.availableItems))
+ }
+
   render() {
+    let items = this._loadAvailableItems()
+
     const nextRoute = {
       component: ItemList,
       title: 'Add Items',
-      passProps: { address: this.props.address }
+      passProps: { userInfo: this.props.userInfo, availableItems: items }
     }
 
     return(

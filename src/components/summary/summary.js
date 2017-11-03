@@ -3,12 +3,14 @@ import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableHighlight
 import Confirmation from '../confirmation/confirmation'
 
 class Summary extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      pickUpAddress: null,
-      pickUpDate: null,
-      items: null
+      user_id: props.userInfo.id,
+      pickUpAddress: props.address,
+      pickUpDate: props.date,
+      items: props.items,
+      email: props.userInfo.email
     }
   }
   _handleBackPress() {
@@ -17,23 +19,23 @@ class Summary extends React.Component {
 
  _handleNextPress(nextRoute) {
    this.props.navigator.push(nextRoute)
+   this._postDonation()
  }
+
+ // _postDonation() {
+ //   fetch('https://offeraidbackend.herokuapp.com/', {
+ //     method: 'POST',
+ //     headers: {
+ //       'Accept': 'application/json',
+ //       'Content-Type': 'application/json',
+ //     },
+ //     body: JSON.stringify({
+ //
+ //     })
+ //   })
+ // }
 
  _keyExtractor = (item, index) => index
-
- componentDidMount() {
-   this.setSummary()
- }
-
- setSummary() {
-   this.setState({
-     pickUpAddress: this.props.address,
-     pickUpDate: this.props.date,
-     items: this.props.items
-   }, function() {
-     console.log(this.state)
-   })
- }
 
   render() {
     const nextRoute = {

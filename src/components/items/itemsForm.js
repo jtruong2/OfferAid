@@ -1,12 +1,13 @@
 import React from 'react';
-import { Text, StyleSheet, View, TextInput, Picker, KeyboardAvoidingView, Button, Keyboard } from 'react-native';
+import { Text, StyleSheet, View, TextInput, Picker, KeyboardAvoidingView, Button, Keyboard} from 'react-native';
 
 class ItemsForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      item: 'Canned goods',
+      item: '',
       quantity: null,
+      itemSelection: props.availableItems
     }
   }
 
@@ -17,17 +18,16 @@ class ItemsForm extends React.Component {
   }
 
   render() {
+    let availableItems = this.state.itemSelection.map((s, i) => {
+      return <Picker.Item key={i} value={s} label={s} />
+    })
     return(
       <KeyboardAvoidingView style={styles.container}>
         <Picker
         selectedValue={this.state.item}
         onValueChange={(itemValue, itemIndex) => this.setState({item: itemValue})}
         itemStyle={styles.itemLabel}>
-          <Picker.Item label="Canned goods" value="Canned Goods" />
-          <Picker.Item label="Clothing items" value="Clothing items" />
-          <Picker.Item label="Paper towels" value="Paper Towels" />
-          <Picker.Item label="Blankets" value="Blankets" />
-          <Picker.Item label="Water bottles" value="Water bottles" />
+          {availableItems}
         </Picker>
         <View style={styles.quantitySect}>
           <Text style={{color: 'white', padding: 10}}>Quantity:</Text>

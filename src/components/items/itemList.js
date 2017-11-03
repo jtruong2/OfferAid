@@ -7,16 +7,17 @@ class ItemList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      items: []
+      selectedItems: [],
+      availableItems: props.availableItems
     }
     this.handleList = this.handleList.bind(this)
   }
 
   handleList(obj) {
-    let itemsCopy = this.state.items.slice()
+    let itemsCopy = this.state.selectedItems.slice()
     itemsCopy.push(obj)
     this.setState({
-      items: itemsCopy
+      selectedItems: itemsCopy
     })
   }
 
@@ -30,15 +31,28 @@ class ItemList extends React.Component {
 
   _keyExtractor = (item, index) => index
 
+  // componentDidMount(){
+  //   this._loadAvailableItems()
+  // }
+  //
+  // _loadAvailableItems(){
+  //   fetch('https://offeraidbackend.herokuapp.com/api/v1/items')
+  //   .then((response) => response.json())
+  //   .then((responseJson) => this.setState({ availableItems: responseJson}))
+  //   .then(() => console.log(this.state.availableItems))
+  // }
+
   render() {
+
     const nextRoute = {
       component: DatePicker,
       title: 'Pick a Date and Time',
-      passProps: {address: this.props.address, items: this.state.items}
+      passProps: {userInfo: this.props.userInfo, items: this.state.selectedItems}
     }
+    this._loadAvailableItems
     return(
       <KeyboardAvoidingView style={styles.container}>
-        <ItemsForm handleList = {this.handleList}/>
+        <ItemsForm handleList = {this.handleList} availableItems = {this.state.availableItems}/>
         <FlatList
           data={this.state.items}
           keyExtractor={this._keyExtractor}
