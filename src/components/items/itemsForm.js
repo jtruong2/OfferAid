@@ -5,27 +5,29 @@ class ItemsForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      item: props.availableItems[0].name,
-      quantity: null,
-      id: null
+      name: props.availableItems[0].name,
+      id: props.availableItems[0].id,
+      quantity: null
     }
   }
 
   _handleAddItem() {
+    console.log(this.state)
     this.props.handleList(this.state)
     this.textInput.clear()
     Keyboard.dismiss()
   }
 
   render() {
-    let items = this.props.availableItems.map((obj) => {
-      return <Picker.Item key={obj.id} value={obj.name} label={obj.name} />
+    let items = this.props.availableItems.map((item) => {
+      return <Picker.Item key={item.id} value={item.name} label={item.name} />
     })
+
     return(
       <KeyboardAvoidingView style={styles.container}>
         <Picker
-        selectedValue={this.state.item}
-        onValueChange={(itemValue, itemIndex) => this.setState({item: itemValue })}
+        onValueChange={(itemValue, itemIndex) => this.setState({name: itemValue, index: itemIndex + 1 })}
+        selectedValue={this.state.name}
         itemStyle={styles.itemLabel}>
         {items}
         </Picker>

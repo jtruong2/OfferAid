@@ -43,7 +43,7 @@ class ItemList extends React.Component {
         <FlatList
           data={this.state.selectedItems}
           keyExtractor={this._keyExtractor}
-          renderItem={({item}) => <Text style={styles.list}>{item['item']}  x  {item['quantity']}</Text>}
+          renderItem={({item}) => <Text style={styles.list}>{item['name']}  x  {item['quantity']}</Text>}
         />
         <TouchableHighlight onPress={() => {this._handleNextPress(nextRoute)}}>
           <Text style={{marginBottom: 100, alignSelf: 'center'}}>

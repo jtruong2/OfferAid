@@ -30,13 +30,11 @@ class Summary extends React.Component {
        'Content-Type': 'application/json',
      },
      body: JSON.stringify({
-       donation: {
-         user_id: this.state.user_id,
-         email: this.state.email,
-         pickup_date: this.state.pickUpDate,
-         pickup_address: this.state.pickUpAddress,
-         items: this.items         
-       }
+       user_id: this.state.user_id,
+       email: this.state.email,
+       pickup_date: this.state.pickUpDate,
+       pickup_address: this.state.pickUpAddress,
+       items: this.state.items
      })
    }).then((response) => response.json()).then((responseJson) => {
      console.log(responseJson)
@@ -59,7 +57,7 @@ class Summary extends React.Component {
       <FlatList
         data={this.state.items}
         keyExtractor={this._keyExtractor}
-        renderItem={({item}) => <Text style={styles.list}>{item['item']}  x  {item['quantity']}</Text>}
+        renderItem={({item}) => <Text style={styles.list}>{item['name']}  x  {item['quantity']}</Text>}
       />
         <TouchableHighlight onPress={() => {this._handleNextPress(nextRoute)}}>
           <Text style={{marginBottom: 100, alignSelf: 'center'}}>
