@@ -7,6 +7,7 @@ class ItemsForm extends React.Component {
     this.state = {
       item: props.availableItems[0].name,
       quantity: null,
+      id: null
     }
   }
 

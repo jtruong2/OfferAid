@@ -18,22 +18,30 @@ class Summary extends React.Component {
   }
 
  _handleNextPress(nextRoute) {
-   this.props.navigator.push(nextRoute)
    this._postDonation()
+   this.props.navigator.push(nextRoute)
  }
 
- // _postDonation() {
- //   fetch('https://offeraidbackend.herokuapp.com/', {
- //     method: 'POST',
- //     headers: {
- //       'Accept': 'application/json',
- //       'Content-Type': 'application/json',
- //     },
- //     body: JSON.stringify({
- //
- //     })
- //   })
- // }
+ _postDonation() {
+   fetch(`https://offeraidbackend.herokuapp.com/api/v1/user/${this.state.user_id}/donations`, {
+     method: 'POST',
+     headers: {
+       'Accept': 'application/json',
+       'Content-Type': 'application/json',
+     },
+     body: JSON.stringify({
+       donation: {
+         user_id: this.state.user_id,
+         email: this.state.email,
+         pickup_date: this.state.pickUpDate,
+         pickup_address: this.state.pickUpAddress,
+         items: this.items         
+       }
+     })
+   }).then((response) => response.json()).then((responseJson) => {
+     console.log(responseJson)
+   })
+ }
 
  _keyExtractor = (item, index) => index
 
