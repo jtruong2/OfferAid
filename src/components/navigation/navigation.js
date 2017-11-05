@@ -11,6 +11,7 @@ class Navigator extends React.Component {
           title: 'Donate',
           passProps: {userInfo: this.props.userInfo}
         }}
+        translucent= {true}
         style={{flex: 1}}
       />
     );

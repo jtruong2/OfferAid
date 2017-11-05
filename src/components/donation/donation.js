@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableHighlight} from 'react-native';
+import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableHighlight, TouchableOpacity} from 'react-native';
 import ItemList from '../items/itemList'
 
 class Donation extends React.Component {
@@ -37,12 +37,11 @@ class Donation extends React.Component {
 
     return(
       <View style={styles.container}>
-        <Image style={{flex: 1, height: undefined, width: undefined}} resizeMode='contain' source={require('../../images/box_of_food.jpg')}/>
-        <TouchableHighlight style={{backgroundColor: '#2c3e50'}} onPress={() => {this._handleNextPress(nextRoute)}}>
-          <Text style={{marginBottom: 100, alignSelf: 'center'}}>
-            Continue
-          </Text>
-        </TouchableHighlight>
+        <View style={{width: undefined, height: 250, backgroundColor: '#36357f'}}>
+          <TouchableOpacity style={styles.nextButton} onPress={() => {this._handleNextPress(nextRoute)}}>
+            <Image source={require('../../images/next.png')} />
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -51,9 +50,16 @@ class Donation extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2c3e50',
+    backgroundColor: 'white',
     paddingTop: 64
+  },
+  nextButton: {
+    position: 'relative',
+    bottom: -500,
+    flexDirection: 'row',
+    justifyContent: 'center'
   }
+
 })
 
 module.exports = Donation

@@ -92,7 +92,8 @@ var styles = StyleSheet.create({
   },
   tabIcon: {
     width: 24,
-    height: 24
+    height: 24,
+    color: 'black'
   }
 });
 

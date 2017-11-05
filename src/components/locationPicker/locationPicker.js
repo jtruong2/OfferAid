@@ -40,7 +40,7 @@ class LocationPicker extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2c3e50',
+    backgroundColor: 'white',
     paddingTop: 64
   },
   address: {

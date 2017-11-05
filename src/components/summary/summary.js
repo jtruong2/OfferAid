@@ -10,7 +10,8 @@ class Summary extends React.Component {
       pickUpAddress: props.address,
       pickUpDate: props.date,
       items: props.items,
-      email: props.userInfo.email
+      email: props.userInfo.email,
+      confirmation: ''
     }
   }
   _handleBackPress() {
@@ -18,11 +19,10 @@ class Summary extends React.Component {
   }
 
  _handleNextPress(nextRoute) {
-   this._postDonation()
-   this.props.navigator.push(nextRoute)
+   this._postDonation(nextRoute)
  }
 
- _postDonation() {
+ _postDonation(nextRoute) {
    fetch(`https://offeraidbackend.herokuapp.com/api/v1/user/${this.state.user_id}/donations`, {
      method: 'POST',
      headers: {
@@ -37,17 +37,19 @@ class Summary extends React.Component {
        items: this.state.items
      })
    }).then((response) => response.json()).then((responseJson) => {
-     console.log(responseJson)
-   })
+     this.setState({ confirmation: responseJson.confirmation })
+   }).then(() => {
+     const nextRoute = {
+       component: Confirmation,
+       title: 'Confirmation',
+       passProps: { confirmation: this.state.confirmation }
+     }
+     this.props.navigator.push(nextRoute)})
  }
 
  _keyExtractor = (item, index) => index
 
   render() {
-    const nextRoute = {
-      component: Confirmation,
-      title: 'Confirmation',
-    }
 
     return(
       <View style={styles.container}>
@@ -59,7 +61,7 @@ class Summary extends React.Component {
         keyExtractor={this._keyExtractor}
         renderItem={({item}) => <Text style={styles.list}>{item['name']}  x  {item['quantity']}</Text>}
       />
-        <TouchableHighlight onPress={() => {this._handleNextPress(nextRoute)}}>
+        <TouchableHighlight onPress={() => {this._handleNextPress()}}>
           <Text style={{marginBottom: 100, alignSelf: 'center'}}>
             Schedule Pickup
           </Text>
@@ -72,7 +74,7 @@ class Summary extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2c3e50',
+    backgroundColor: 'white',
     paddingTop: 64
   },
 })
