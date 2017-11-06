@@ -27,7 +27,7 @@ password: 123
 The backend is deployed on heorku which you can find here:
 
 ```
-APP: eraidbackend.herokuapp.com/api/v1/items
+APP: https://offeraidbackend.herokuapp.com
 REPO: https://github.com/jtruong2/OfferAid_BE
 ```
 
