@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigatorIOS, Text } from 'react-native';
 import Donation from '../donation/donation'
 
-class Navigator extends React.Component {
+class DonationNavigator extends React.Component {
   render() {
     return (
       <NavigatorIOS
@@ -17,4 +17,4 @@ class Navigator extends React.Component {
     );
   }
 }
-module.exports = Navigator
+module.exports = DonationNavigator
