@@ -6,6 +6,7 @@ import Dashboard from './src/components/dashboard/dashboard'
 import renderIf from './src/render/renderIf'
 import TabBar from './src/components/tabBar/tabBar'
 import styles from './src/styles/styles'
+import url from './src/api'
 
 export default class App extends React.Component {
   constructor() {
@@ -21,7 +22,7 @@ export default class App extends React.Component {
   }
 
   verifyLogin(obj) {
-    fetch('https://offeraidbackend.herokuapp.com/api/v1/login', {
+    fetch(`${url}/api/v1/login`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -49,7 +50,7 @@ export default class App extends React.Component {
   }
 
   _getDonations(){
-    fetch(`https://offeraidbackend.herokuapp.com/api/v1/user/${this.state.id}/donations`, {
+    fetch(`${url}/api/v1/user/${this.state.id}/donations`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',

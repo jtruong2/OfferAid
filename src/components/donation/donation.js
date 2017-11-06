@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableHighlight, TouchableOpacity} from 'react-native';
 import ItemList from '../items/itemList'
 import styles from '../../styles/styles'
+import url from '../../api'
 
 class Donation extends React.Component {
   constructor() {
@@ -19,7 +20,7 @@ class Donation extends React.Component {
  }
 
  _loadAvailableItems(){
-   fetch('https://offeraidbackend.herokuapp.com/api/v1/items')
+   fetch(`${url}/api/v1/items`)
    .then((response) => response.json())
    .then((responseJson) => this.setState({ availableItems: responseJson}))
    .then(() => console.log(this.state))

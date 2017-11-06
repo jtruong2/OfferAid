@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableOpacity, FlatList} from 'react-native';
 import Confirmation from '../confirmation/confirmation'
 import styles from '../../styles/styles'
+import url from '../../api'
 
 class Summary extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class Summary extends React.Component {
  }
 
  _postDonation(nextRoute) {
-   fetch(`https://offeraidbackend.herokuapp.com/api/v1/user/${this.state.user_id}/donations`, {
+   fetch(`${url}/api/v1/user/${this.state.user_id}/donations`, {
      method: 'POST',
      headers: {
        'Accept': 'application/json',

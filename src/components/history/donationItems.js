@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet, View, FlatList } from 'react-native';
 import styles from '../../styles/styles'
+import url from '../../api'
 
 class DonationItems extends React.Component {
   constructor(props){
@@ -12,16 +13,15 @@ class DonationItems extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`https://offeraidbackend.herokuapp.com/api/v1/user/${this.state.donation.user_id}/donations/${this.state.donation.id}/items`, {
+    fetch(`${url}/api/v1/user/${this.state.donation.user_id}/donations/${this.state.donation.id}`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       }
     }).then((response) => response.json()).then((responseJson) => {
-      console.log(responseJson)
       this.setState({
-        items: responseJson
+        items: responseJson.items
       })
     })
   }
@@ -35,7 +35,7 @@ class DonationItems extends React.Component {
           data={this.state.items}
           keyExtractor={this._keyExtractor}
           renderItem={({item}) =>
-            <Text style={styles.itemList}>{item['name']}  x  {item['quantity']}</Text>
+            <Text>{item['name']}</Text>
           }
         />
       </View>

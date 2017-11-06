@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView} from 'react-native';
 import styles from '../../styles/styles'
 import AnimateNumber from 'react-native-animate-number'
+import url from '../../api'
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Dashboard extends React.Component {
   }
 
   _getCount() {
-    fetch(`https://offeraidbackend.herokuapp.com/api/v1/user/${this.props.userInfo.id}/items`, {
+    fetch(`${url}/api/v1/user/${this.props.userInfo.id}/items`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
