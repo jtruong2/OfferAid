@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, Button, StatusBar } from 'react-native';
 import Login from './login'
+import styles from '../../styles/styles'
 
 class LoginForm extends React.Component {
   constructor() {
@@ -16,8 +17,8 @@ class LoginForm extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <TextInput className = 'email' style = {styles.input}
+      <View style={styles.loginFormContainer}>
+        <TextInput className = 'email' style = {styles.loginInput}
                onChangeText = {(email) => this.setState({ email })}
                autoCapitalize="none"
                onSubmitEditing={() => this.passwordInput.focus()}
@@ -28,7 +29,7 @@ class LoginForm extends React.Component {
                textAlign= 'center'
                placeholderTextColor='rgba(225,225,225,0.7)'/>
 
-        <TextInput style = {styles.input}
+        <TextInput style = {styles.loginInput}
                     returnKeyType="go"
                     onChangeText = {(password) => this.setState({ password })}
                     ref={(input)=> this.passwordInput = input}
@@ -37,34 +38,13 @@ class LoginForm extends React.Component {
                     placeholderTextColor='rgba(225,225,225,0.7)'
                     secureTextEntry/>
 
-        <TouchableOpacity style={styles.buttonContainer}
+        <TouchableOpacity style={styles.loginButtonContainer}
                            onPress={this.handleSubmit}>
-                   <Text  style={styles.buttonText}>LOGIN</Text>
+                   <Text  style={styles.loginButtonText}>LOGIN</Text>
         </TouchableOpacity>
       </View>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-   padding: 20
-  },
-  input:{
-      height: 40,
-      backgroundColor: 'rgba(225,225,225,0.2)',
-      marginBottom: 10,
-      padding: 10,
-      color: '#fff'
-  },
-  buttonContainer:{
-      backgroundColor: '#5c65aa',
-      paddingVertical: 15
-  },
-  buttonText:{
-      color: '#fff',
-      textAlign: 'center',
-      fontWeight: '700'
-  }
-})
 module.exports = LoginForm

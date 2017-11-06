@@ -1,6 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableHighlight, DatePickerIOS} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, DatePickerIOS} from 'react-native';
 import LocationPicker from '../locationPicker/locationPicker'
+import styles from '../../styles/styles'
 
 class DatePicker extends React.Component {
 
@@ -33,27 +34,21 @@ class DatePicker extends React.Component {
       passProps: {userInfo: this.props.userInfo, date: date.toString(), items: this.props.items}
     }
     return(
-      <View style={styles.container}>
+      <View style={styles.datePickerContainer}>
         <DatePickerIOS
           date={this.state.date}
           mode="datetime"
           timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
           onDateChange={this.onDateChange}
         />
-        <TouchableHighlight onPress={() => {this._handleNextPress(nextRoute)}}>
-          <Text style={{marginBottom: 100, alignSelf: 'center'}}>
+        <TouchableOpacity onPress={() => {this._handleNextPress(nextRoute)}}>
+          <Text style={{marginBottom: 100, alignSelf: 'center', padding: 20}}>
             Continue
           </Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     )
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    paddingTop: 64
-  },
-})
+
 module.exports = DatePicker

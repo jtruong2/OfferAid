@@ -5,6 +5,7 @@ import Login from './src/components/login/login'
 import Dashboard from './src/components/dashboard/dashboard'
 import renderIf from './src/render/renderIf'
 import TabBar from './src/components/tabBar/tabBar'
+import styles from './src/styles/styles'
 
 export default class App extends React.Component {
   constructor() {
@@ -13,7 +14,8 @@ export default class App extends React.Component {
       id: null,
       email: null,
       loggedIn: false,
-      address: null
+      address: null,
+      donations: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -38,10 +40,28 @@ export default class App extends React.Component {
           loggedIn: true,
         })
       }
+      console.log(responseJson)
       this.handleAddress(responseJson)
-    }).then(() => { console.log(this.state)
+    }).then(() => {
+      console.log(this.state)
+      this._getDonations()
     }).done()
   }
+
+  _getDonations(){
+    fetch(`https://offeraidbackend.herokuapp.com/api/v1/user/${this.state.id}/donations`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    }).then((response) => response.json()).then((responseJson) => {
+      this.setState({
+        donations: responseJson
+      })
+    })
+  }
+
 
   handleAddress(obj) {
     let fullAddress = `\n ${obj.user.street_address} \n ${obj.user.city}, ${obj.user.state} ${obj.user.zip_code}`
@@ -67,6 +87,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-});

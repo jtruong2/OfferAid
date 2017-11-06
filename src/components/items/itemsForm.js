@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet, View, TextInput, Picker, KeyboardAvoidingView, Button, Keyboard} from 'react-native';
+import styles from '../../styles/styles'
 
 class ItemsForm extends React.Component {
   constructor(props) {
@@ -12,7 +13,6 @@ class ItemsForm extends React.Component {
   }
 
   _handleAddItem() {
-    console.log(this.state)
     this.props.handleList(this.state)
     this.textInput.clear()
     Keyboard.dismiss()
@@ -24,55 +24,26 @@ class ItemsForm extends React.Component {
     })
 
     return(
-      <KeyboardAvoidingView style={styles.container}>
+      <KeyboardAvoidingView style={styles.itemsFormContainer}>
         <Picker
         onValueChange={(itemValue, itemIndex) => this.setState({name: itemValue, index: itemIndex + 1 })}
         selectedValue={this.state.name}
         itemStyle={styles.itemLabel}>
         {items}
         </Picker>
-        <View style={styles.quantitySect}>
-          <Text style={{color: 'white', padding: 10}}>Quantity:</Text>
-          <TextInput style={styles.input}
+        <View style={styles.quantity}>
+          <Text style={{ padding: 10}}>Quantity:</Text>
+          <TextInput style={styles.quantityInput}
             onChangeText={(quantity) => this.setState({quantity})}
             value={this.state.quantity}
             keyboardType= "numeric"
             ref={input => { this.textInput = input }}
           />
         </View>
-          <Button onPress={() => {this._handleAddItem()}} title="Add Item" style={styles.button}/>
+        <Button onPress={() => {this._handleAddItem()}} title="Add Item" style={styles.addItemButton}/>
       </KeyboardAvoidingView>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-   padding: 20
-  },
-  quantitySec: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  itemLabel: {
-    color: 'white'
-  },
-  input:{
-      height: 40,
-      width: 80,
-      backgroundColor: 'rgba(225,225,225,0.2)',
-      marginBottom: 10,
-      padding: 10,
-      color: '#fff'
-  },
-  button: {
-    height: 50,
-    width: 80,
-    backgroundColor: '#107515',
-    color: 'white',
-    flexDirection: 'row',
-    justifyContent: 'flex-end'
-  }
-})
 
 module.exports = ItemsForm

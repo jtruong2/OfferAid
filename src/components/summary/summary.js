@@ -1,6 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableHighlight, FlatList} from 'react-native';
+import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableOpacity, FlatList} from 'react-native';
 import Confirmation from '../confirmation/confirmation'
+import styles from '../../styles/styles'
 
 class Summary extends React.Component {
   constructor(props) {
@@ -49,33 +50,32 @@ class Summary extends React.Component {
 
  _keyExtractor = (item, index) => index
 
-  render() {
+ _dateFormat() {
+  let date = this.state.pickUpDate.slice()
+  let dateSplit = date.split(' ').slice(0,5).join(' ')
+  return dateSplit
+ }
 
+  render() {
     return(
-      <View style={styles.container}>
-      <Text>Summary</Text>
-      <Text>{this.state.pickUpAddress}</Text>
-      <Text>{this.state.pickUpDate}</Text>
-      <FlatList
-        data={this.state.items}
-        keyExtractor={this._keyExtractor}
-        renderItem={({item}) => <Text style={styles.list}>{item['name']}  x  {item['quantity']}</Text>}
-      />
-        <TouchableHighlight onPress={() => {this._handleNextPress()}}>
+      <View style={styles.summaryContainer}>
+        <Text style={styles.header}>Pick Up Address: </Text>
+        <Text style={styles.summaryText}>{this.state.pickUpAddress}</Text>
+        <Text style={styles.header}>Pick Up Date: </Text>
+        <Text style={styles.summaryText}>{this._dateFormat()}</Text>
+        <Text style={styles.header}>Items: </Text>
+        <FlatList
+          data={this.state.items}
+          keyExtractor={this._keyExtractor}
+          renderItem={({item}) => <Text style={styles.summaryList}>{item['name']}  x  {item['quantity']}</Text>}
+        />
+        <TouchableOpacity onPress={() => {this._handleNextPress()}}>
           <Text style={{marginBottom: 100, alignSelf: 'center'}}>
             Schedule Pickup
           </Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    paddingTop: 64
-  },
-})
 module.exports = Summary

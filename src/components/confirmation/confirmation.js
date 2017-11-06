@@ -1,6 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableHighlight} from 'react-native';
+import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import Donation from '../donation/donation'
+import styles from '../../styles/styles'
 
 class Confirmation extends React.Component {
   constructor(props) {
@@ -22,24 +23,17 @@ class Confirmation extends React.Component {
 
     console.log(this.state)
     return(
-      <View style={styles.container}>
-        <Text>Confirmation: {this.props.confirmation}</Text>
-        <TouchableHighlight onPress={() => {this._handleNextPress(nextRoute)}}>
-          <Text style={{marginBottom: 100, alignSelf: 'center'}}>
+      <View style={styles.confirmationContainer}>
+        <Text style={styles.header}>Confirmation: </Text>
+        <Text style={{textAlign: 'center', padding: 10}}>{this.props.confirmation}</Text>
+        <TouchableOpacity onPress={() => {this._handleNextPress(nextRoute)}}>
+          <Text style={{marginBottom: 100, alignSelf: 'center', padding: 10}}>
             Continue
           </Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    paddingTop: 64
-  },
-})
 
 module.exports = Confirmation

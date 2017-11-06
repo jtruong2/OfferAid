@@ -1,21 +1,15 @@
 import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
+import styles from '../../styles/styles'
 
 class Settings extends React.Component {
   render() {
     return(
-      <View style={styles.container}>
+      <View style={styles.settingsContainer}>
         <Text>Settings</Text>
       </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-})
 
 module.exports = Settings

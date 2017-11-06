@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableHighlight, TouchableOpacity} from 'react-native';
 import ItemList from '../items/itemList'
+import styles from '../../styles/styles'
 
 class Donation extends React.Component {
   constructor() {
@@ -36,30 +37,12 @@ class Donation extends React.Component {
     }
 
     return(
-      <View style={styles.container}>
-        <View style={{width: undefined, height: 250, backgroundColor: '#36357f'}}>
-          <TouchableOpacity style={styles.nextButton} onPress={() => {this._handleNextPress(nextRoute)}}>
-            <Image source={require('../../images/next.png')} />
-          </TouchableOpacity>
-        </View>
+      <View style={styles.donationsContainer}>
+        <TouchableOpacity style={styles.nextButton} onPress={() => {this._handleNextPress(nextRoute)}}>
+          <Image source={require('../../images/next.png')} />
+        </TouchableOpacity>
       </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    paddingTop: 64
-  },
-  nextButton: {
-    position: 'relative',
-    bottom: -500,
-    flexDirection: 'row',
-    justifyContent: 'center'
-  }
-
-})
-
 module.exports = Donation

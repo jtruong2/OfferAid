@@ -5,6 +5,7 @@ import Navigation from '../navigation/navigation'
 import News from '../news/news'
 import History from '../history/history'
 import Settings from '../settings/settings'
+import styles from '../../styles/styles'
 
 class TabBar extends React.Component {
 
@@ -27,7 +28,7 @@ class TabBar extends React.Component {
           title= "Home"
           selected={this.state.selectedTab === 'Dashboard'}
           onPress={() => this.setTab('Dashboard')}>
-          <Dashboard />
+          <Dashboard userInfo = {this.props.userInfo}/>
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
@@ -51,7 +52,7 @@ class TabBar extends React.Component {
           title= "History"
           selected={this.state.selectedTab === 'History'}
           onPress={() => this.setTab('History')}>
-          <History />
+          <History userInfo = {this.props.userInfo}/>
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
@@ -80,21 +81,5 @@ class TabHistory extends React.Component {
   }
 
 }
-
-var styles = StyleSheet.create({
-  tabContent: {
-    flex: 1,
-    alignItems: 'center'
-  },
-  tabText: {
-    margin: 50,
-    fontSize: 40
-  },
-  tabIcon: {
-    width: 24,
-    height: 24,
-    color: 'black'
-  }
-});
 
 module.exports = TabBar
