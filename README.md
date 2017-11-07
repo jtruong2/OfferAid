@@ -9,6 +9,9 @@ git clone
 run 'npm install'
 run 'npm start'
 ```
+If you have an iOS device, download the expo app here: https://itunes.apple.com/app/apple-store/id982107779?ct=www&mt=8
+and scan the QR code.
+
 If you don't have an iOS device, you can follow the option for an emulator on npm start.
 
 ### Prerequisites
