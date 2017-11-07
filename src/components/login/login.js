@@ -18,7 +18,7 @@ class Login extends React.Component {
     return(
       <KeyboardAvoidingView behavior='padding' style={styles.mainContainer}>
         <View style={styles.loginContainer}>
-          <Image resizeMode="contain" style={styles.loginLogo} source={require('../../images/donatelogologin.png')} />
+          <Image resizeMode="contain" style={styles.loginLogo} source={require('../../images/heart(2).png')} />
         </View>
 
         <View>

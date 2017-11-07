@@ -11,6 +11,7 @@ class HistoryNavigator extends React.Component {
           title: 'Past Donations',
           passProps: {userInfo: this.props.userInfo}
         }}
+        barTintColor= '#36357f'
         translucent= {true}
         style={{flex: 1}}
       />

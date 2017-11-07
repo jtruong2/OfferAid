@@ -5,8 +5,10 @@ import styles from '../../styles/styles'
 class Settings extends React.Component {
   render() {
     return(
-      <View style={styles.settingsContainer}>
-        <Text>Settings</Text>
+      <View style={{flex:1}}>
+        <View style={styles.headerBar}>
+          <Text style={styles.headerFont}>Settings</Text>
+        </View>
       </View>
     )
   }

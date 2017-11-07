@@ -7,13 +7,12 @@ class DonationItems extends React.Component {
   constructor(props){
     super(props)
     this.state = ({
-      donation: props.donation,
       items: null
     })
   }
 
-  componentDidMount() {
-    fetch(`${url}/api/v1/user/${this.state.donation.user_id}/donations/${this.state.donation.id}`, {
+  _componentDidMount() {
+    fetch(`${url}/api/v1/user/${this.props.donation.user_id}/donations/${this.props.donation.id}`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -21,9 +20,9 @@ class DonationItems extends React.Component {
       }
     }).then((response) => response.json()).then((responseJson) => {
       this.setState({
-        items: responseJson.items
+        items: responseJson
       })
-    })
+    }).then(console.log(this.state))
   }
 
   _keyExtractor = (item, index) => index
@@ -31,6 +30,8 @@ class DonationItems extends React.Component {
   render() {
     return(
       <View>
+        <Text>Confirmation</Text>
+        <Text>{this.props.donation.confirmation}</Text>
         <FlatList
           data={this.state.items}
           keyExtractor={this._keyExtractor}

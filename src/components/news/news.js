@@ -5,8 +5,13 @@ import styles from '../../styles/styles'
 class News extends React.Component {
   render() {
     return(
-      <View style={styles.newsContainer}>
-        <Text>News</Text>
+      <View style={{flex:1}}>
+        <View style={styles.headerBar}>
+          <Text style={styles.headerFont}>News</Text>
+        </View>
+        <View style={styles.newsContainer}>
+
+        </View>
       </View>
     )
   }

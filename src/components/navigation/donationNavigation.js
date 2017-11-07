@@ -11,6 +11,7 @@ class DonationNavigator extends React.Component {
           title: 'Donate',
           passProps: {userInfo: this.props.userInfo}
         }}
+        barTintColor= '#36357f'
         translucent= {true}
         style={{flex: 1}}
       />

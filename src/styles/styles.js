@@ -3,14 +3,20 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   headerBar: {
     width: undefined,
-    height: 300,
-    backgroundColor: '#36357f'
+    height: 65,
+    backgroundColor: 'rgba(54, 53, 127, 0.9)',
   },
   header: {
     fontWeight: 'bold',
     textAlign: 'center',
     paddingTop: 20,
     fontSize: 20
+  },
+  headerFont: {
+    textAlign: 'center',
+    paddingTop: 30,
+    fontSize: 16,
+    fontWeight: 'bold'
   },
 
   //confirmation
@@ -22,24 +28,7 @@ const styles = StyleSheet.create({
 
   //dashboard
   dashboardContainer: {
-    flex: 1,
     backgroundColor: 'white',
-  },
-  count: {
-    fontSize: 60,
-    textAlign: 'center',
-    position: 'relative',
-    bottom: -50,
-    color: 'white'
-  },
-  countHeader: {
-    fontSize: 40,
-    position: 'relative',
-    bottom: -30,
-    fontStyle: 'italic',
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
 
   //date picker
@@ -52,22 +41,50 @@ const styles = StyleSheet.create({
   //donations
   donationsContainer: {
     flex: 1,
-    backgroundColor: '#36357f',
     paddingTop: 64
   },
-  nextButton: {
+  count: {
+    fontSize: 60,
+    textAlign: 'center',
     position: 'relative',
-    bottom: -500,
-    flexDirection: 'row',
-    justifyContent: 'center'
+    bottom: -50,
+    color: '#5c65aa'
   },
+  countContainer: {
+    position: 'relative',
+    bottom: -200,
 
-
+  },
+  countHeader: {
+    fontStyle: 'italic',
+    fontWeight: 'bold',
+    fontSize: 40,
+    textAlign: 'center'
+  },
+  donationButton: {
+    width: 180,
+    height: 60,
+  },
+  buttonPosition: {
+    position: 'relative',
+    bottom: -400,
+    right: -117
+  },
 
   //history
   historyContainer: {
     flex: 1,
     backgroundColor: 'white',
+  },
+  head: {
+    height: 40,
+    backgroundColor: '#f1f8ff'
+  },
+  text: {
+    marginLeft: 5
+  },
+  row: {
+    height: 30
   },
 
   //items list
