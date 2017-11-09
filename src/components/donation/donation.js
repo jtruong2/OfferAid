@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableHighlight, TouchableOpacity} from 'react-native';
+import { Container, Header, Content, List, ListItem, Button } from 'native-base';
 import ItemList from '../items/itemList'
 import styles from '../../styles/styles'
 import url from '../../api'
@@ -62,11 +63,38 @@ class Donation extends React.Component {
           <Text style={styles.countHeader}>
           Contributions{"\n"}
           to Date</Text>
-          <AnimateNumber style={styles.count} value={this.state.itemCount} countBy={1} />
-        </View>
-        <TouchableOpacity style={styles.buttonPosition} onPress={() => {this._handleNextPress(nextRoute)}}>
-          <Image style={{position: 'relative', left: -10}} source={require('../../images/donate-button.png')} />
-        </TouchableOpacity>
+          <AnimateNumber style={styles.count} value={this.state.itemCount} countBy={3} />
+          </View>
+        <Container>
+          <Content>
+            <List>
+              <ListItem itemHeader first>
+                <Text style={{fontWeight: 'bold', fontSize: 17, textAlign: 'center'}}>Items in Demand</Text>
+              </ListItem>
+              <ListItem>
+                <Text>Shoes</Text>
+              </ListItem>
+              <ListItem >
+                <Text>Canned Goods</Text>
+              </ListItem>
+              <ListItem>
+                <Text>Blankets</Text>
+              </ListItem>
+              <ListItem>
+                <Text>Backpacks</Text>
+              </ListItem>
+              <ListItem>
+                <Text>Batteries</Text>
+              </ListItem>
+              <ListItem>
+                <Text>Clothing Items</Text>
+              </ListItem>
+            </List>
+          </Content>
+        </Container>
+        <Button style={styles.buttonPosition} onPress={() => {this._handleNextPress(nextRoute)}} rounded success>
+          <Text style={{color: 'white', position: 'relative', right: -40}}>Make a Donation</Text>
+        </Button>
       </View>
     )
   }

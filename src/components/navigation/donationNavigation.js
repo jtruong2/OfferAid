@@ -8,7 +8,7 @@ class DonationNavigator extends React.Component {
       <NavigatorIOS
         initialRoute={{
           component: Donation,
-          title: 'Donate',
+          title: 'Main',
           passProps: {userInfo: this.props.userInfo}
         }}
         barTintColor= '#36357f'

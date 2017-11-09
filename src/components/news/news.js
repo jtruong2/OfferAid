@@ -11,7 +11,6 @@ class News extends React.Component {
         </View>
         <View style={styles.newsContainer}>
           <Image style={styles.construction} source={require('../../images/construction.png')} />
-
         </View>
       </View>
     )

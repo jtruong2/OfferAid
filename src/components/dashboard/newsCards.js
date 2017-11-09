@@ -45,7 +45,7 @@ export default class NewsCard extends Component {
                 <Left>
                   <Button transparent textStyle={{color: '#87838B'}}>
                     <Icon name="logo-twitter" />
-                    <Text>1,926 stars</Text>
+                    <Text>1,926</Text>
                   </Button>
                 </Left>
               </CardItem>
@@ -76,7 +76,7 @@ export default class NewsCard extends Component {
                 <Left>
                   <Button transparent textStyle={{color: '#87838B'}}>
                     <Icon name="logo-twitter" />
-                    <Text>1,200 stars</Text>
+                    <Text>1,200</Text>
                   </Button>
                 </Left>
               </CardItem>
@@ -107,7 +107,7 @@ export default class NewsCard extends Component {
                 <Left>
                   <Button transparent textStyle={{color: '#87838B'}}>
                     <Icon name="logo-twitter" />
-                    <Text>800 stars</Text>
+                    <Text>800</Text>
                   </Button>
                 </Left>
               </CardItem>

@@ -1,5 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, DatePickerIOS} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, DatePickerIOS} from 'react-native'
+import { Container, Header, Content, List, ListItem, Button } from 'native-base';
 import LocationPicker from '../locationPicker/locationPicker'
 import styles from '../../styles/styles'
 
@@ -41,11 +42,9 @@ class DatePicker extends React.Component {
           timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
           onDateChange={this.onDateChange}
         />
-        <TouchableOpacity onPress={() => {this._handleNextPress(nextRoute)}}>
-          <Text style={{marginBottom: 100, alignSelf: 'center', padding: 20}}>
-            Continue
-          </Text>
-        </TouchableOpacity>
+      <Button style={{position: 'relative', bottom : -350, right: -120, width: 180}} onPress={() => {this._handleNextPress(nextRoute)}} rounded success>
+          <Text style={{color: 'white', position: 'relative', right: -65}}>Continue</Text>
+      </Button>
       </View>
     )
   }

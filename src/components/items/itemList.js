@@ -1,6 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, KeyboardAvoidingView, FlatList, Button, TouchableOpacity, TouchableHighlight} from 'react-native';
+import { StyleSheet, Text, View, Image, KeyboardAvoidingView, FlatList, TouchableOpacity, TouchableHighlight} from 'react-native';
 import {SwipeableFlatList} from 'react-native-swipeable-flat-list'
+import { Container, Header, Content, List, ListItem, Button } from 'native-base';
 import ItemsForm from './itemsForm'
 import DatePicker from '../datePicker/datePicker'
 import styles from '../../styles/styles'
@@ -66,11 +67,10 @@ class ItemList extends React.Component {
               </Text>
           )}
         />
-        <TouchableOpacity onPress={() => {this._handleNextPress(nextRoute)}}>
-          <Text style={{marginBottom: 100, alignSelf: 'center'}}>
-            Continue
-          </Text>
-        </TouchableOpacity>
+
+        <Button style={styles.buttonPosition} onPress={() => {this._handleNextPress(nextRoute)}} rounded success>
+          <Text style={{color: 'white', position: 'relative', right: -65}}>Continue</Text>
+        </Button>
       </KeyboardAvoidingView>
     )
   }

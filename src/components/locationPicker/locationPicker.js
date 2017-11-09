@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
+import { Container, Header, Content, ListItem, Radio, Right, Button } from 'native-base';
 import Summary from '../summary/summary'
 import styles from '../../styles/styles'
 
@@ -27,13 +28,32 @@ class LocationPicker extends React.Component {
 
     return(
       <View style={styles.locationPickerContainer}>
-        <Text style={styles.headerFont}>Primary Address: </Text>
-        <Text style={styles.address}>{this.state.address}</Text>
-        <TouchableOpacity style={{position: 'relative', bottom: -400}} onPress={() => {this._handleNextPress(nextRoute)}}>
-          <Text style={{marginBottom: 100, alignSelf: 'center', padding: 10}}>
-            Continue
-          </Text>
-        </TouchableOpacity>
+        <Text style={styles.headerFont}>Choose a Pickup Location: </Text>
+        <Container>
+          <Content>
+            <ListItem>
+                <Text>123 Main St. Denver, CO 80202</Text>
+                <Right>
+                  <Radio selected={true} />
+                </Right>
+              </ListItem>
+              <ListItem>
+                <Text>1331 17th St. Denver, CO 80202</Text>
+                <Right>
+                  <Radio selected={false} />
+                </Right>
+              </ListItem>
+              <ListItem>
+                <Text>707 s. Alamo st. Denver, CO 80123</Text>
+                <Right>
+                  <Radio selected={false} />
+                </Right>
+              </ListItem>
+            </Content>
+          </Container>
+          <Button style={styles.buttonPosition} onPress={() => {this._handleNextPress(nextRoute)}} rounded success>
+            <Text style={{color: 'white', position: 'relative', right: -65}}>Continue</Text>
+          </Button>
       </View>
     )
   }

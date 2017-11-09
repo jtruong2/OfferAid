@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, View, FlatList, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, View, FlatList, TouchableOpacity, Image } from 'react-native';
 import styles from '../../styles/styles'
 import {SwipeableFlatList} from 'react-native-swipeable-flat-list'
 import DonationItems from './donationItems'
@@ -34,24 +34,12 @@ class History extends React.Component {
     let donationsAndDate = this.state.donations.map((donation) => {
       [donation['created_at'], donation['confirmation']]
     })
-    console.log(donationsAndDate)
     return(
       <View style={styles.historyContainer}>
-        <Text>Past Donation Confirmations</Text>
-        <HistoryTable data = {donationsAndDate}/>
+        <Image style={styles.construction} source={require('../../images/construction.png')} />
       </View>
     )
   }
 }
 
 module.exports = History
-
-// <FlatList
-// data={this.state.donations}
-// keyExtractor={this._keyExtractor}
-// renderItem={({item}) =>
-// <TouchableOpacity onPress={() => {this._handleNextPress(item)}}>
-// <Text style={styles.itemList}>{item['created_at'].substring(0, 10)}: {item['confirmation']}</Text>
-// </TouchableOpacity>
-// }
-// />

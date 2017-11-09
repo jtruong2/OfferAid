@@ -1,5 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableOpacity, FlatList} from 'react-native';
+import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableOpacity, FlatList} from 'react-native'
+import { Container, Header, Content, List, ListItem, Button } from 'native-base';
 import Confirmation from '../confirmation/confirmation'
 import styles from '../../styles/styles'
 import url from '../../api'
@@ -70,11 +71,9 @@ class Summary extends React.Component {
           keyExtractor={this._keyExtractor}
           renderItem={({item}) => <Text style={styles.summaryList}>{item['name']}  x  {item['quantity']}</Text>}
         />
-        <TouchableOpacity onPress={() => {this._handleNextPress()}}>
-          <Text style={{marginBottom: 100, alignSelf: 'center'}}>
-            Schedule Pickup
-          </Text>
-        </TouchableOpacity>
+        <Button style={styles.buttonPosition} onPress={() => {this._handleNextPress()}} rounded block>
+          <Text style={{color: 'white'}}>Schedule Pickup</Text>
+        </Button>
       </View>
     )
   }

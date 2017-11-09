@@ -58,33 +58,36 @@ const styles = StyleSheet.create({
     paddingTop: 64
   },
   count: {
-    fontSize: 60,
+    fontSize: 40,
+    fontFamily: 'Helvetica',
     textAlign: 'center',
     position: 'relative',
-    bottom: -50,
-    color: '#5c65aa'
+    color: 'white',
+    position: 'relative'
   },
   countContainer: {
-    position: 'relative',
-    bottom: -200,
-
+    height: 225,
+    width: 'auto',
+    backgroundColor: '#898686'
   },
   countHeader: {
     fontStyle: 'italic',
     fontWeight: 'bold',
-    fontSize: 40,
-    textAlign: 'center'
+    fontSize: 30,
+    textAlign: 'center',
+    paddingTop: 30
   },
   buttonPosition: {
     position: 'relative',
-    bottom: -400,
-    right: -115
+    top: -60,
+    right: -115,
+    width: 180
   },
 
   //history
   historyContainer: {
-    flex: 1,
-    backgroundColor: 'white',
+    position: 'relative',
+    bottom: -50
   },
   head: {
     height: 40,
