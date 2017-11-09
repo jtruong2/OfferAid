@@ -1,7 +1,8 @@
 import React from 'react';
 import { TabBarIOS, Text, StyleSheet, View } from 'react-native';
 import Dashboard from '../dashboard/dashboard'
-import Navigation from '../navigation/navigation'
+import DonationNavigation from '../navigation/donationNavigation'
+import HistoryNavigation from '../navigation/historyNavigation'
 import News from '../news/news'
 import History from '../history/history'
 import Settings from '../settings/settings'
@@ -44,7 +45,7 @@ class TabBar extends React.Component {
           title= "Donate"
           selected={this.state.selectedTab === 'Donations'}
           onPress={() => this.setTab('Donations')}>
-          <Navigation userInfo = {this.props.userInfo}/>
+          <DonationNavigation userInfo = {this.props.userInfo}/>
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
@@ -52,7 +53,7 @@ class TabBar extends React.Component {
           title= "History"
           selected={this.state.selectedTab === 'History'}
           onPress={() => this.setTab('History')}>
-          <History userInfo = {this.props.userInfo}/>
+          <HistoryNavigation userInfo = {this.props.userInfo}/>
         </TabBarIOS.Item>
 
         <TabBarIOS.Item

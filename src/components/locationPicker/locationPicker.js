@@ -7,10 +7,7 @@ class LocationPicker extends React.Component {
   constructor(props) {
     super(props)
     this.state = ({
-      address: props.userInfo.address,
-      // latitude: null,
-      // longitude: null,
-      // error: null,
+      address: props.userInfo.address
     })
   }
   _handleBackPress() {
@@ -21,20 +18,6 @@ class LocationPicker extends React.Component {
    this.props.navigator.push(nextRoute)
  }
 
- // componentDidMount() {
- //   navigator.geolocation.getCurrentPosition(
- //     (position) => {
- //       this.setState({
- //         latitude: position.coords.latitude,
- //         longitude: position.coords.longitude,
- //         error: null,
- //       });
- //     },
- //     (error) => this.setState({ error: error.message }),
- //     { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
- //   );
- // }
-
   render() {
     const nextRoute = {
       component: Summary,
@@ -44,7 +27,7 @@ class LocationPicker extends React.Component {
 
     return(
       <View style={styles.locationPickerContainer}>
-        <Text style={styles.header}>Primary Address: </Text>
+        <Text style={styles.headerFont}>Primary Address: </Text>
         <Text style={styles.address}>{this.state.address}</Text>
         <TouchableOpacity style={{position: 'relative', bottom: -400}} onPress={() => {this._handleNextPress(nextRoute)}}>
           <Text style={{marginBottom: 100, alignSelf: 'center', padding: 10}}>
