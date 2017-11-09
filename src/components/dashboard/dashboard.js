@@ -3,14 +3,16 @@ import { StyleSheet, Text, View, Image, KeyboardAvoidingView} from 'react-native
 import styles from '../../styles/styles'
 import AnimateNumber from 'react-native-animate-number'
 import url from '../../api'
+import NewsCards from './newsCards'
 
 class Dashboard extends React.Component {
   render() {
     return(
       <View style={{flex: 1}}>
         <View style={styles.headerBar}>
-          <Text style={styles.headerFont}>Home</Text>
+          <Image style={styles.header} source={require('../../images/letteringlogo.png')} />
         </View>
+        <NewsCards />
       </View>
     )
   }

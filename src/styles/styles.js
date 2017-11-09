@@ -7,10 +7,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(54, 53, 127, 0.9)',
   },
   header: {
-    fontWeight: 'bold',
-    textAlign: 'center',
-    paddingTop: 20,
-    fontSize: 20
+    width: 140,
+    height: 60,
+    resizeMode: 'contain',
+    position: 'relative',
+    right: -143,
+    bottom: -15
   },
   headerFont: {
     textAlign: 'center',
@@ -18,7 +20,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold'
   },
-
+  construction: {
+    width: 300,
+    height: 300,
+    position: 'relative',
+    bottom: -30,
+    right: -55
+  },
+  headerFont: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    textAlign: 'center',
+    paddingTop: 20
+  },
   //confirmation
   confirmationContainer: {
     flex: 1,
@@ -61,14 +75,10 @@ const styles = StyleSheet.create({
     fontSize: 40,
     textAlign: 'center'
   },
-  donationButton: {
-    width: 180,
-    height: 60,
-  },
   buttonPosition: {
     position: 'relative',
     bottom: -400,
-    right: -117
+    right: -115
   },
 
   //history

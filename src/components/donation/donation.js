@@ -59,11 +59,13 @@ class Donation extends React.Component {
     return(
       <View style={styles.donationsContainer}>
         <View style={styles.countContainer}>
-          <Text style={styles.countHeader}>Contributions to Date</Text>
+          <Text style={styles.countHeader}>
+          Contributions{"\n"}
+          to Date</Text>
           <AnimateNumber style={styles.count} value={this.state.itemCount} countBy={1} />
         </View>
         <TouchableOpacity style={styles.buttonPosition} onPress={() => {this._handleNextPress(nextRoute)}}>
-          <Image style={styles.donationButton} source={require('../../images/donate-button.png')} />
+          <Image style={{position: 'relative', left: -10}} source={require('../../images/donate-button.png')} />
         </TouchableOpacity>
       </View>
     )

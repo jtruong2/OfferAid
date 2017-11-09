@@ -60,11 +60,11 @@ class Summary extends React.Component {
   render() {
     return(
       <View style={styles.summaryContainer}>
-        <Text style={styles.header}>Pick Up Address: </Text>
+        <Text style={styles.headerFont}>Pick Up Address: </Text>
         <Text style={styles.summaryText}>{this.state.pickUpAddress}</Text>
-        <Text style={styles.header}>Pick Up Date: </Text>
+        <Text style={styles.headerFont}>Pick Up Date: </Text>
         <Text style={styles.summaryText}>{this._dateFormat()}</Text>
-        <Text style={styles.header}>Items: </Text>
+        <Text style={styles.headerFont}>Items: </Text>
         <FlatList
           data={this.state.items}
           keyExtractor={this._keyExtractor}

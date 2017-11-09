@@ -37,7 +37,7 @@ class History extends React.Component {
     console.log(donationsAndDate)
     return(
       <View style={styles.historyContainer}>
-        <Text style={styles.header}>Past Donation Confirmations</Text>
+        <Text>Past Donation Confirmations</Text>
         <HistoryTable data = {donationsAndDate}/>
       </View>
     )
