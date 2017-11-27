@@ -5,9 +5,9 @@ import styles from '../../styles/styles'
 class History extends React.Component {
   constructor(props){
     super(props)
-    this.state = ({
-      donations: props.userInfo.donations
-    })
+    this.state = {
+      donations: props.donations
+    }
   }
   _keyExtractor = (item, index) => index
 

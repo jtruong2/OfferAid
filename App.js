@@ -15,8 +15,7 @@ export default class App extends React.Component {
       id: null,
       email: null,
       loggedIn: false,
-      address: null,
-      donations: null
+      address: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -45,24 +44,8 @@ export default class App extends React.Component {
       this.handleAddress(responseJson)
     }).then(() => {
       console.log(this.state)
-      this._getDonations()
     }).done()
   }
-
-  _getDonations(){
-    fetch(`${url}/api/v1/user/${this.state.id}/donations`, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
-    }).then((response) => response.json()).then((responseJson) => {
-      this.setState({
-        donations: responseJson
-      })
-    })
-  }
-
 
   handleAddress(obj) {
     let fullAddress = `\n ${obj.user.street_address} \n ${obj.user.city}, ${obj.user.state} ${obj.user.zip_code}`

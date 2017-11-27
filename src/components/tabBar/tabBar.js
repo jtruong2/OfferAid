@@ -6,13 +6,15 @@ import News from '../news/news'
 import History from '../history/history'
 import Settings from '../settings/settings'
 import styles from '../../styles/styles'
+import url from '../../api'
 
 class TabBar extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'Dashboard'
+      selectedTab: 'Dashboard',
+      donations: null
     };
   }
 
@@ -20,7 +22,22 @@ class TabBar extends React.Component {
     this.setState({selectedTab: tabId});
   }
 
+  _getDonations(){
+    fetch(`${url}/api/v1/user/${this.props.userInfo.id}/donations`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    }).then((response) => response.json()).then((responseJson) => {
+      this.setState({
+        donations: responseJson
+      })
+    })
+  }
+
   render() {
+    this._getDonations()
     return (
       <TabBarIOS>
         <TabBarIOS.Item
@@ -52,7 +69,7 @@ class TabBar extends React.Component {
           title= "History"
           selected={this.state.selectedTab === 'History'}
           onPress={() => this.setTab('History')}>
-          <History userInfo = {this.props.userInfo}/>
+          <History donations = {this.state.donations}/>
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
@@ -62,7 +79,6 @@ class TabBar extends React.Component {
           onPress={() => this.setTab('Settings')}>
           <Settings/>
         </TabBarIOS.Item>
-
       </TabBarIOS>
     );
   }

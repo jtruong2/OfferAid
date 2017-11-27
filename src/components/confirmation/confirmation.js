@@ -28,7 +28,7 @@ class Confirmation extends React.Component {
         <Text style={{textAlign: 'center'}}>Thank you for donating!</Text>
         <Text style={styles.headerFont}>Confirmation: </Text>
         <Text style={{textAlign: 'center', padding: 10}}>{this.props.confirmation}</Text>
-        <Button style={{position: 'relative', bottom: -475, right: -120, width: 180}} onPress={() => {this._handleNextPress(nextRoute)}} rounded block>
+        <Button style={{position: 'relative', bottom: -455, right: -120, width: 180}} onPress={() => {this._handleNextPress(nextRoute)}} rounded block>
           <Text style={{color: 'white', position: 'relative'}}>Back to Main</Text>
         </Button>
       </View>

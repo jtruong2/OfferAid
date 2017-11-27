@@ -42,7 +42,7 @@ class DatePicker extends React.Component {
           timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
           onDateChange={this.onDateChange}
         />
-      <Button style={{position: 'relative', bottom : -350, right: -120, width: 180}} onPress={() => {this._handleNextPress(nextRoute)}} rounded success>
+      <Button style={{position: 'relative', bottom : -330, right: -120, width: 180}} onPress={() => {this._handleNextPress(nextRoute)}} rounded success>
           <Text style={{color: 'white', position: 'relative', right: -65}}>Continue</Text>
       </Button>
       </View>
