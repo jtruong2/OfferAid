@@ -1,9 +1,8 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, Text, View, Image, KeyboardAvoidingView, ScrollView} from 'react-native';
 import styles from '../../styles/styles'
 import AnimateNumber from 'react-native-animate-number'
 import url from '../../api'
-import NewsCards from './newsCards'
 
 class Dashboard extends React.Component {
   render() {
@@ -12,7 +11,7 @@ class Dashboard extends React.Component {
         <View style={styles.headerBar}>
           <Image style={styles.header} source={require('../../images/letteringlogo.png')} />
         </View>
-        <NewsCards />
+
       </View>
     )
   }

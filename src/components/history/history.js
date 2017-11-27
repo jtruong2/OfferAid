@@ -1,45 +1,51 @@
 import React from 'react';
-import { Text, StyleSheet, View, FlatList, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, FlatList, TouchableOpacity, Image, ScrollView, Container, Text } from 'react-native';
 import styles from '../../styles/styles'
-import {SwipeableFlatList} from 'react-native-swipeable-flat-list'
-import DonationItems from './donationItems'
-import HistoryTable from './table.js'
 
 class History extends React.Component {
   constructor(props){
     super(props)
     this.state = ({
-      donations: props.userInfo.donations,
-      selectedDonation: null
+      donations: props.userInfo.donations
     })
   }
-
-  _handleBackPress() {
-   this.props.navigator.pop()
-  }
-
-  _handleNextPress(donation) {
-    console.log(donation)
-    const nextRoute = {
-      component: DonationItems,
-      title: 'Donation Receipt',
-      passProps: {donation: donation}
-    }
-    this.props.navigator.push(nextRoute)
-  }
-
   _keyExtractor = (item, index) => index
 
   render() {
-    let donationsAndDate = this.state.donations.map((donation) => {
-      [donation['created_at'], donation['confirmation']]
-    })
     return(
-      <View style={styles.historyContainer}>
-        <Image style={styles.construction} source={require('../../images/construction.png')} />
+      <View>
+        <View style={styles.headerBar}>
+          <Image style={styles.header} source={require('../../images/letteringlogo.png')} />
+        </View>
+        <ScrollView>
+          <FlatList
+            data={this.state.donations}
+            keyExtractor={this._keyExtractor}
+            renderItem={({item}) =>
+              <View>
+                <Text style={{fontWeight: 'bold'}}>{(item['created_at']).slice(0, 10)}{"\n"}{"\n"}</Text>
+                <Text>Pick up location: {item['pickup_address']}{"\n"}</Text>
+                <Text>Pick up date: {item['pickup_date'].slice(0,24)}{"\n"}</Text>
+                <FlatList
+                  data={item.donation_items}
+                  keyExtractor={this._keyExtractor}
+                  renderItem={({item}) =>
+                    <Text> {item.item['name']} x {item['quantity']} </Text>
+                  }
+                />
+                <Text>{"\n"}</Text>
+                <Text>confirmation: {item['confirmation']}{"\n"}</Text>
+                <Text>_________________________________________________</Text>
+              </View>
+            }
+          />
+        </ScrollView>
       </View>
     )
   }
 }
+
+
+
 
 module.exports = History

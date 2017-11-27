@@ -1,4 +1,4 @@
 const url = 'https://offeraidbackend.herokuapp.com'
-// const url = 'https://10.121.252.202:3000'
+// const url = 'http://10.0.0.250:3000'
 
 module.exports = url
